@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from 'axios';
+import {get} from '../api/user';
 export default function User() {
     const [users, setUsers] = useState([]);
     useEffect(() => {
@@ -7,18 +7,20 @@ export default function User() {
     }, [])
     const getAllUsers = async () => {
         try {
-            debugger
-            const res = await axios.get(`http://localhost:3333/user`);
+            const res = await get();
             setUsers(res.data);
+            debugger
         } catch (err) {
             console.log(err)
         }
     };
     return (
         <>
-            {/* <div>hi for all the users</div> */}
             {users && users.map(user =>
-                <div key={user.password}>{user.userName}</div>
+                <div >
+                  <h1>Name:{user.userName}</h1>
+                  <h1> Password:{user.password}</h1>
+                    </div>
             )}
         </>
     )
