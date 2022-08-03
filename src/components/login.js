@@ -15,7 +15,6 @@ export default function User() {
         }
     };
     return (
-        
         <>
             {users && users.map(user =>
                 <div >
